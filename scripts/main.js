@@ -106,7 +106,8 @@ window.addEventListener('DOMContentLoaded', function() {
     
     
     
-    function dealDeck(){
+    function dealDeck(){ //this function is designed to deal the deck to both the dealer and the player. See the breakdown below:
+
         let playerCard1 = deck.pop(); //allows for the last card in the deck to be taken from the deck 
         
         let playerCard2 = deck.pop(); //allows for the last card in the deck to be taken from the deck 
@@ -122,7 +123,7 @@ window.addEventListener('DOMContentLoaded', function() {
         dealerHandList.push(dealerCard1);//allows for the card popped off above to be placed in the dealers hand where we can see it on the screen
         
         dealerHandList.push(dealerCard2);//allows for the card popped off above to be placed in the dealers hand where we can see it on the screen
-    
+
         for(i=0 ; i < playerHandList.length ; i++){ 
         
             let initialPlayerHand = document.createElement('img');//this creates the initial cards for the player
@@ -144,39 +145,61 @@ window.addEventListener('DOMContentLoaded', function() {
         }
         
         
-    function hitPlayer() {
+
+
+
+
+
+    function hitPlayer() { //this function is designed to give the player an additional card when asked
+        
         playerPoints = 0;
-        let playerCard = deck.pop();
-        playerHandList.push(playerCard);
         
-        let playerHitCard = document.createElement('img');
-        playerHitCard.src = playerHandList[playerHandList.length - 1].img
-        playerHand.appendChild(playerHitCard);
+        let playerCard = deck.pop(); //this sets the variable playerCard to equal the card that was popped, which would be the last card in the deck
+
+        playerHandList.push(playerCard); //this takes the card that was just popped/now labeled playerCard/ and adds it to the players hand. Note that we will not be able to see the image of the card at this point.
+        
+        let playerHitCard = document.createElement('img'); //this creates the image element for the card mentioned above 
+
+        playerHitCard.src = playerHandList[playerHandList.length - 1].img //this displays the image for the corresponding cards value 
+
+        playerHand.appendChild(playerHitCard); //append is being used to add the card that was created above to the players hand where the user can see
         
         cardAmount -= 1;
         cardsLeft.innerHTML = cardAmount;
         }
         
         
-    function hitDealer() {
+
+
+
+
+    function hitDealer() { //this function is designed to give the dealer an additional card, or to 'hit them' woth the card.
+
         dealerPoints = 0;
-        let dealerCard = deck.pop();
-        dealerHandList.push(dealerCard);
+
+        let dealerCard = deck.pop(); //this sets the variable dealerCard to equal the card that was popped, which would be the last card in the deck
+
+        dealerHandList.push(dealerCard); //this takes the card that was just popped/now labeled dealerCard/ and adds it to the dealers hand. Note that we will not be able to see the image of the card at this point.
         
-        let dealerHitCard = document.createElement('img');
-        dealerHitCard.src = dealerHandList[dealerHandList.length - 1].img
-        dealerHand.appendChild(dealerHitCard);
+        let dealerHitCard = document.createElement('img'); //this creates the image element for the card mentioned above
+
+        dealerHitCard.src = dealerHandList[dealerHandList.length - 1].img //this displays the image for the corresponding cards value
+
+        dealerHand.appendChild(dealerHitCard); //append is being used to add the card that was created above to the dealers hand where the user can see
         
         cardAmount -= 1;
         cardsLeft.innerHTML = cardAmount;
         
         }
         
+    
+
         
-    function calculatePlayerPoints() {
-        playerHandList.sort(function(a, b){
-            return b.rank - a.rank;
-        })
+
+
+
+    function calculatePlayerPoints() { //this function is designed to calculate and display the players points
+
         for (var i = 0; i < playerHandList.length; i++) {
             if (playerHandList[i].rank === 1) {
                 if (playerPoints < 11) {
@@ -190,6 +213,7 @@ window.addEventListener('DOMContentLoaded', function() {
             playerPoints += 10;
             }
         }
+        
         playerHandPoints.innerHTML = playerPoints.toString();
         
         let message = document.querySelector('.message');
@@ -205,9 +229,7 @@ window.addEventListener('DOMContentLoaded', function() {
         
         
     function calculateDealerPoints() {
-        dealerHandList.sort(function(a, b){
-        return b.rank - a.rank;
-        })
+
         for (var i = 0; i < dealerHandList.length; i++) {
         if (dealerHandList[i].rank === 1) {
             if (dealerPoints < 11) {
@@ -234,11 +256,21 @@ window.addEventListener('DOMContentLoaded', function() {
         }
     } 
     
+
+
+
+
+
+
     function updateScore() {
         playerScoreShown.textContent = playerScore;
         dealerScoreShown.textContent = dealerScore;
     }
     
+
+
+
+
     function clearCards() {
         playerHandList = [];
         playerHand.innerHTML = "";
@@ -247,6 +279,11 @@ window.addEventListener('DOMContentLoaded', function() {
         dealerHand.innerHTML = "";
     }
     
+
+
+
+
+
     function gameOver() {
         let message = document.querySelector('.message');
         if (cardAmount === 0 || cardAmount < 4) {
@@ -273,11 +310,6 @@ window.addEventListener('DOMContentLoaded', function() {
         }
         }
         
-        // function removeAllChildNodes(parent) {
-        //     while (parent.firstChild) {
-        //         parent.removeChild(parent.firstChild);
-        //     }
-        // }
         
         
         
@@ -307,9 +339,7 @@ window.addEventListener('DOMContentLoaded', function() {
         dealDeck();
         calculatePlayerPoints();
         calculateDealerPoints();
-        // removeAllChildNodes(playerHand)
-        // removeAllChildNodes(dealerHand)
-        // removeAllChildNodes(message)
+
             
         deal.setAttribute('class', 'none');
         
@@ -318,8 +348,6 @@ window.addEventListener('DOMContentLoaded', function() {
         
         
         hit.addEventListener('click', ()=>{
-            // if(playerHandPoints > 21)
-            //here you can probably put an if statement that states if a player has over 21 points they will be unable to hit anything aside from the play again button.
             hitPlayer();
             calculatePlayerPoints();
             updateScore();
@@ -347,8 +375,8 @@ window.addEventListener('DOMContentLoaded', function() {
         }
         
         
-        gameOver();
-        updateScore();
+        gameOver(); //calling the gameOver function
+        updateScore(); //calling the updateScore function
         
         hit.setAttribute('class', 'none');
         stand.setAttribute('class', 'none');
@@ -357,8 +385,9 @@ window.addEventListener('DOMContentLoaded', function() {
         
         })
         
-        playAgain.addEventListener('click', ()=>{
-        updateScore();
+        playAgain.addEventListener('click', ()=>{ //this allows for the program to listen for a click on the play again button, and once it is pressed the following occures:
+
+        updateScore(); //the updateScore function is called so that the player may play another game and the score will be updated without a need to refresh the page
             
         dealerPoints = 0;
         playerPoints = 0;
@@ -372,10 +401,10 @@ window.addEventListener('DOMContentLoaded', function() {
         message.innerHTML = "";
             
         
-        clearCards();
+        clearCards(); //calling the clearCards function
             
-        dealDeck();
-        calculatePlayerPoints();
-        calculateDealerPoints();
+        dealDeck(); //calling the dealDeck function
+        calculatePlayerPoints(); //calling the calculatePlayerPoints function
+        calculateDealerPoints();  //calling the calculateDealerPoints function
             
         })
