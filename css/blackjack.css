@@ -12,7 +12,7 @@ body {
     margin: 0 auto 10px;
     height: 1em;
     font-size: 18px;
-    color: rgb(22, 77, 8);
+    color: rgb(77, 8, 8);
   }
   
   .message-box.error {
@@ -22,9 +22,9 @@ body {
   .table {
     width: 900px;
     max-width: calc(100% - 20px);
-    border: 8px solid rgb(10, 43, 2);
+    border: 8px solid rgb(80, 1, 1);
     border-radius: 20px;
-    background: rgb(22, 77, 8);
+    background: rgb(129, 9, 9);
     margin: 0 auto;
     color: white;
     padding: 30px;
@@ -46,7 +46,7 @@ body {
   
   .hand {
     height: 120px;
-    background: rgba(10, 43, 2, 0.5);
+    background: rgb(80, 1, 1);
     border-radius: 5px;
   }
   
@@ -68,13 +68,13 @@ body {
     padding: 10px 16px;
     border-radius: 10px;
     color: rgb(189, 229, 255);
-    background: rgb(0, 98, 163);
+    background: rgb(0, 0, 0);
   }
   
   button:hover {
     cursor: pointer;
-    background: rgb(35, 133, 199);
-    box-shadow: 0px 0px 10px 5px rgba(35, 133, 199, 0.55);
+    background: rgb(255, 28, 28);
+    box-shadow: 0px 0px 10px 5px rgb(0, 0, 0);
   }
   
   button[disabled] {
@@ -95,5 +95,5 @@ body {
   
   button[type="reset"]:hover {
     background: rgb(150, 7, 7);
-    box-shadow: 0px 0px 10px 5px rgba(150, 7, 7, 0.63);
+    box-shadow: 0px 0px 10px 5px rgb(150, 7, 7);
   }

@@ -123,7 +123,7 @@ window.addEventListener('DOMContentLoaded', function() {
         
         dealerHandList.push(dealerCard2);//allows for the card popped off above to be placed in the dealers hand where we can see it on the screen
     
-        for(i=0 ; i < playerHandList.length ; i++){
+        for(i=0 ; i < playerHandList.length ; i++){ 
         
             let initialPlayerHand = document.createElement('img');//this creates the initial cards for the player
         
