@@ -1,5 +1,5 @@
 //issue notes
-//after win, deck keeps dealing until hit play again
+//after win, deck keeps dealing until hit play again - impliment veronicas disable buttons method after player/dealer have reached 21
 //redo how deck is pulled in - currently works, but requires a very specific name structure
 
 
@@ -82,6 +82,7 @@ window.addEventListener('DOMContentLoaded', function() {
                 card.rank = a
                 card.suit = suits[i]
                 card.img = `images/${a}_of_${suits[i]}.png` //this is the method used to call the images. I renamed the images to begin with a number in order for it to pull everything this way. Alternatively, one could write a switch statement.
+                
                 deck.push(card)
             }
         }
@@ -94,6 +95,7 @@ window.addEventListener('DOMContentLoaded', function() {
     function shuffleDeck(array) {
         for (var i = array.length - 1; i > 0; i--) { 
             var a = Math.floor(Math.random() * (i + 1)); //math.random allows for the card to be different each time
+            
             var temp = array[i];
             array[i] = array[a];
             array[a] = temp;
@@ -106,25 +108,34 @@ window.addEventListener('DOMContentLoaded', function() {
     
     function dealDeck(){
         let playerCard1 = deck.pop(); //allows for the last card in the deck to be taken from the deck 
+        
         let playerCard2 = deck.pop(); //allows for the last card in the deck to be taken from the deck 
+        
         playerHandList.push(playerCard1);//allows for the card popped off above to be placed in the players hand where we can see it on the screen
+        
         playerHandList.push(playerCard2);//allows for the card popped off above to be placed in the players hand where we can see it on the screen
     
         let dealerCard1 = deck.pop();//allows for the last card in the deck to be taken from the deck
+        
         let dealerCard2 = deck.pop();//allows for the last card in the deck to be taken from the deck
+        
         dealerHandList.push(dealerCard1);//allows for the card popped off above to be placed in the dealers hand where we can see it on the screen
+        
         dealerHandList.push(dealerCard2);//allows for the card popped off above to be placed in the dealers hand where we can see it on the screen
     
         for(i=0 ; i < playerHandList.length ; i++){
-        let initialPlayerHand = document.createElement('img');//this shows the initial cards that the player starts with
-        initialPlayerHand.src = playerHandList[i].img; //
-        playerHand.appendChild(initialPlayerHand); //append is being used to add the players hand to the initial cards they were dealt
+        
+            let initialPlayerHand = document.createElement('img');//this creates the initial cards for the player
+        
+            initialPlayerHand.src = playerHandList[i].img; //this is responsible for displaying the images of the initial cards for the player
+        
+            playerHand.appendChild(initialPlayerHand); //append is being used here to add the players hand/new card/ to the initial cards they were dealt
         }
     
         for(i=0 ; i < dealerHandList.length ; i++){
-            let initialDealerHand = document.createElement('img');
-            initialDealerHand.src = dealerHandList[i].img;
-            dealerHand.appendChild(initialDealerHand);
+            let initialDealerHand = document.createElement('img');//this creates the initial cards for the dealer
+            initialDealerHand.src = dealerHandList[i].img;//this is responsible for displaying the images of the initial cards for the dealer
+            dealerHand.appendChild(initialDealerHand);//append is being used here to add the dealers hand/new card/ to the initial cards they were dealt
         }
         
         cardAmount -= 4;
