@@ -172,12 +172,6 @@ window.addEventListener('DOMContentLoaded', function() {
         
         }
         
-        
-
-
-
-
-
     function hitPlayer() { 
         //this function is designed to give the player an additional card when asked
         
@@ -202,11 +196,6 @@ window.addEventListener('DOMContentLoaded', function() {
         cardsLeft.innerHTML = cardAmount;
         }
         
-        
-
-
-
-
     function hitDealer() { 
         //this function is designed to give the dealer an additional card, or to 'hit them' woth the card.
 
@@ -231,12 +220,6 @@ window.addEventListener('DOMContentLoaded', function() {
         cardsLeft.innerHTML = cardAmount;
         
         }
-        
-    
-
-        
-
-
 
     function calculatePlayerPoints() { 
         //this function is designed to calculate and display the players points
@@ -296,21 +279,11 @@ window.addEventListener('DOMContentLoaded', function() {
         gameOver();
         }
     } 
-    
-
-
-
-
-
 
     function updateScore() {
         playerScoreShown.textContent = playerScore;
         dealerScoreShown.textContent = dealerScore;
     }
-    
-
-
-
 
     function clearCards() {
         playerHandList = [];
@@ -319,11 +292,6 @@ window.addEventListener('DOMContentLoaded', function() {
         dealerHandList = [];
         dealerHand.innerHTML = "";
     }
-    
-
-
-
-
 
     function gameOver() {
         let message = document.querySelector('.message');
@@ -350,11 +318,7 @@ window.addEventListener('DOMContentLoaded', function() {
         }
         }
         }
-        
-        
-        
-        
-        
+           
         getCardImage();
         shuffleDeck(deck);
         
@@ -364,10 +328,6 @@ window.addEventListener('DOMContentLoaded', function() {
         names[0].setAttribute('class', 'none player-name2');
         names[1].setAttribute('class', 'none player-name2');
         cardsLeft.innerHTML = cardAmount;
-        
-        
-        
-        
         
         deal.addEventListener('click', ()=>{
         let message = document.querySelector('.message');

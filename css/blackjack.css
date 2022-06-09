@@ -1,5 +1,7 @@
 body {
     box-sizing: border-box;
+    background-image: url("/Blackjack_Game/images/background.jpg");
+    background-size: cover;
   }
   
   body * {
@@ -10,9 +12,10 @@ body {
     width: 900px;
     max-width: calc(100% - 20px);
     margin: 0 auto 10px;
-    height: 1em;
-    font-size: 18px;
-    color: rgb(77, 8, 8);
+    height: 2em;
+    font-size: 25px;
+    color: rgb(241, 232, 232);
+    
   }
   
   .message-box.error {
@@ -36,7 +39,7 @@ body {
   
   .player-name {
     display: block;
-    font-size: 16px;
+    font-size: 25px;
     margin-bottom: 8px;
   }
   
