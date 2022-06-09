@@ -1,6 +1,6 @@
 body {
     box-sizing: border-box;
-    background-image: url("/Blackjack_Game/images/background.jpg");
+    background-image: url("./images/background.jpg");
     background-size: cover;
   }
   
