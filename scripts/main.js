@@ -6,34 +6,34 @@ window.addEventListener('DOMContentLoaded', function() {
     // this adds the event listener to our browser window, allowing us to see our work on the browser screen
     })
     
-    var suits = ['clubs', 'diamonds', 'hearts', 'spades'];
+    let suits = ['clubs', 'diamonds', 'hearts', 'spades'];
     //this is to set up my suits array
     
-    var deck = [];
+    let deck = [];
     //this is setting the deck to an empty array, which will allow us to pull in random cards
     
-    var playerHand = document.querySelector('#player-hand');
+    let playerHand = document.querySelector('#player-hand');
     //this is to display the players cards
     
-    var dealerHand = document.querySelector('#dealer-hand');
+    let dealerHand = document.querySelector('#dealer-hand');
     //this is to display the dealers cards
     
-    var dealerHandPoints = document.querySelector('#dealer-points');
+    let dealerHandPoints = document.querySelector('#dealer-points');
     //this is to display the numeric points for the cards next to the dealer name
     
-    var playerHandPoints = document.querySelector('#player-points');
+    let playerHandPoints = document.querySelector('#player-points');
     //this is to display the numberic points for the cards next to the player name
     
-    var deal = document.querySelector('#deal-button');
+    let deal = document.querySelector('#deal-button');
     //this allows the deck to deal out the cards
     
-    var hit = document.querySelector('#hit-button');
+    let hit = document.querySelector('#hit-button');
     //this allows the player to get another card
     
-    var stand = document.querySelector('#stand-button');
+    let stand = document.querySelector('#stand-button');
     //the stand button allows the player to indicate that they do not wish to draw another card
     
-    var playAgain = document.querySelector('#again-button');
+    let playAgain = document.querySelector('#again-button');
     //this allows the player to play another game without having to refresh the page and lose their win/loss count
     
     
@@ -42,48 +42,48 @@ window.addEventListener('DOMContentLoaded', function() {
 
     //the block of code below is responsible for the section that counts how many cards are left and keeps track of wins/losses. This needs to be styled, because right now it is just plain text
     
-    var names = document.querySelectorAll('.player-name2'); 
+    let names = document.querySelectorAll('.player-name2'); 
     //this is for the player name in the upper box that keeps track of wins/losses/cards left
     
-    var playerScoreShown = document.querySelector('.player-score-shown') 
-    //this is for the tracking the score of the player. If you take away this variable, then it will break not only the score counter but also the play again button. 
+    let playerScoreShown = document.querySelector('.player-score-shown') 
+    //this is for the tracking the score of the player. If you take away this letiable, then it will break not only the score counter but also the play again button. 
 
     
-    var dealerScoreShown = document.querySelector('.dealer-score-shown')
-    //this is for the tracking the score of the dealer. If you take away this variable, then it will break not only the score counter but also the play again button. 
+    let dealerScoreShown = document.querySelector('.dealer-score-shown')
+    //this is for the tracking the score of the dealer. If you take away this letiable, then it will break not only the score counter but also the play again button. 
     
-    var cardsLeft = document.querySelector('.cards-left-shown')
-    //this is to document how many cards are left. If you take away this variable, you will not be able to play the game because it will essentially remove all of the cards from the deck.
+    let cardsLeft = document.querySelector('.cards-left-shown')
+    //this is to document how many cards are left. If you take away this letiable, you will not be able to play the game because it will essentially remove all of the cards from the deck.
     
-    var initialPlayerHand = document.createElement('img'); 
+    let initialPlayerHand = document.createElement('img'); 
     //this creates the image element for the players starting hand, but further code will be needed to display it to the user. See below.
     
-    var initialDealerHand = document.createElement('img');
+    let initialDealerHand = document.createElement('img');
     //this creates the image element for the dealers starting hand, but further code will be needed to display it to the user. See below.
     
-    var dealerHandList = [];
+    let dealerHandList = [];
     //this sets the dealer hand to an empty array
     
-    var playerHandList = [];
+    let playerHandList = [];
     //this sets the players hand to an empty array
 
-    var playerPoints = 0;
+    let playerPoints = 0;
     //this sets the players initial points to 0
-    var dealerPoints = 0;
+    let dealerPoints = 0;
     //this sets the dealers initial points to 0
-    var playerScore = 0;
+    let playerScore = 0;
     //in the upper box where the score is being kept, this starts the players score off at 0
-    var dealerScore = 0;
+    let dealerScore = 0;
     //in the upper box where the score is being kept, this starts the dealers score off at 0
-    var cardAmount = 52;
+    let cardAmount = 52;
     //this sets the card amount to 52, as that is how many cards we have in our deck
     
     
     function getCardImage() {
-        for (var i = 0; i < suits.length; i++) {
-            for (var a = 1; a < 14; a++) {
-                var card = {};
-                //the card variable is set to an empty object so that the object may be called in. See below:
+        for (let i = 0; i < suits.length; i++) {
+            for (let a = 1; a < 14; a++) {
+                let card = {};
+                //the card is set to an empty object so that the object may be called in. See below:
 
                 card.rank = a
                 //this assigns a number to the cards rank/1 is ace, 2 is 2, etc/
@@ -104,12 +104,17 @@ window.addEventListener('DOMContentLoaded', function() {
     
     
     
+/**
+ * The function takes an array as an argument and returns a shuffled array.
+ * @param array - the array to shuffle
+ * @returns The array is being returned.
+ */
     function shuffleDeck(array) {
-        for (var i = array.length - 1; i > 0; i--) { 
-            var a = Math.floor(Math.random() * (i + 1)); 
+        for (let i = array.length - 1; i > 0; i--) { 
+            let a = Math.floor(Math.random() * (i + 1)); 
             //math.random allows for the card to be different each time
             
-            var temp = array[i];
+            let temp = array[i];
             array[i] = array[a];
             array[a] = temp;
         }
@@ -178,7 +183,7 @@ window.addEventListener('DOMContentLoaded', function() {
         playerPoints = 0;
         
         let playerCard = deck.pop(); 
-        //this sets the variable playerCard to equal the card that was popped, which would be the last card in the deck
+        //this sets the letiable playerCard to equal the card that was popped, which would be the last card in the deck
 
         playerHandList.push(playerCard); 
         //this takes the card that was just popped/now labeled playerCard/ and adds it to the players hand. Note that we will not be able to see the image of the card at this point.
@@ -202,7 +207,7 @@ window.addEventListener('DOMContentLoaded', function() {
         dealerPoints = 0;
 
         let dealerCard = deck.pop(); 
-        //this sets the variable dealerCard to equal the card that was popped, which would be the last card in the deck
+        //this sets the letiable dealerCard to equal the card that was popped, which would be the last card in the deck
 
         dealerHandList.push(dealerCard); 
         //this takes the card that was just popped/now labeled dealerCard/ and adds it to the dealers hand. Note that we will not be able to see the image of the card at this point.
@@ -224,7 +229,7 @@ window.addEventListener('DOMContentLoaded', function() {
     function calculatePlayerPoints() { 
         //this function is designed to calculate and display the players points
 
-        for (var i = 0; i < playerHandList.length; i++) {
+        for (let i = 0; i < playerHandList.length; i++) {
             if (playerHandList[i].rank === 1) {
                 if (playerPoints < 11) {
                     playerPoints += 11;
@@ -254,7 +259,7 @@ window.addEventListener('DOMContentLoaded', function() {
         
     function calculateDealerPoints() {
 
-        for (var i = 0; i < dealerHandList.length; i++) {
+        for (let i = 0; i < dealerHandList.length; i++) {
         if (dealerHandList[i].rank === 1) {
             if (dealerPoints < 11) {
             dealerPoints += 11;
